@@ -377,7 +377,7 @@ class _LiquidSwipe extends State<LiquidSwipe> with TickerProviderStateMixin {
               verticalReveal: notifier.slidePercentVer,
               enableSideReveal: notifier.enableSideReveal,
             ),
-            !widget.disableUserGesture
+            !notifier.shouldDisableUserGesture
                 ? PageDragger(
                     //Used for gesture control
                     fullTransitionPX: widget.fullTransitionValue,
