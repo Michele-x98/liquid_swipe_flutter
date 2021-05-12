@@ -132,6 +132,8 @@ class _PageDraggerState extends State<PageDragger> {
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.50,
+      color: Colors.orange.withOpacity(0.3),
+      alignment: Alignment.bottomCenter,
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onHorizontalDragStart: model.isInProgress ? null : onDragStart,
