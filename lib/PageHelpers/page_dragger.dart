@@ -130,32 +130,36 @@ class _PageDraggerState extends State<PageDragger> {
     //Gesture Detector for horizontal drag
     final model = Provider.of<LiquidProvider>(context, listen: false);
 
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onHorizontalDragStart: model.isInProgress ? null : onDragStart,
-      onHorizontalDragUpdate: model.isInProgress ? null : onDragUpdate,
-      onHorizontalDragEnd: model.isInProgress ? null : onDragEnd,
-      child: Align(
-        alignment: Alignment(
-          1 - slidePercentHor,
-          -1.0 + Utils.handleIconAlignment(widget.iconPosition!) * 2,
-        ),
-        child: Opacity(
-          opacity: 1 - slidePercentHor,
-          child: slideDirection != SlideDirection.leftToRight &&
-                  widget.slideIconWidget != null
-              ? Container(
-                  color: Colors.orange.withOpacity(0.4),
-                  key: _keyIcon,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 2.0,
-                      vertical: 10.0,
-                    ),
-                    child: widget.slideIconWidget,
-                  ),
-                )
-              : null,
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.50,
+        color: Colors.orange.withOpacity(0.3),
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onHorizontalDragStart: model.isInProgress ? null : onDragStart,
+          onHorizontalDragUpdate: model.isInProgress ? null : onDragUpdate,
+          onHorizontalDragEnd: model.isInProgress ? null : onDragEnd,
+          child: Align(
+            alignment: Alignment(
+              1 - slidePercentHor,
+              -1.0 + Utils.handleIconAlignment(widget.iconPosition!) * 2,
+            ),
+            child: Opacity(
+              opacity: 1 - slidePercentHor,
+              child: slideDirection != SlideDirection.leftToRight &&
+                      widget.slideIconWidget != null
+                  ? SizedBox(
+                      key: _keyIcon,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 2.0, vertical: 10.0),
+                        child: widget.slideIconWidget,
+                      ),
+                    )
+                  : null,
+            ),
+          ),
         ),
       ),
     );
