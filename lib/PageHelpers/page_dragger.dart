@@ -130,7 +130,9 @@ class _PageDraggerState extends State<PageDragger> {
     //Gesture Detector for horizontal drag
     final model = Provider.of<LiquidProvider>(context, listen: false);
 
-    return GestureDetector(
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.50,
+      child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onHorizontalDragStart: model.isInProgress ? null : onDragStart,
         onHorizontalDragUpdate: model.isInProgress ? null : onDragUpdate,
@@ -154,6 +156,8 @@ class _PageDraggerState extends State<PageDragger> {
                   )
                 : null,
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
